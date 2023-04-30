@@ -8,8 +8,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform m_Transform;
     [SerializeField] Player player;
 
-    public Character character;
-
+    public Character parent;
+    private Collider parent_collider;
+    private float timeExist = 4f;
     public Vector3 TargetPosition;
     public Transform Transform
     {
@@ -21,21 +22,31 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        parent_collider = parent.GetComponent<Collider>();  
+    }
+
     private void Update()
     {
-        Transform.position = Vector3.MoveTowards(Transform.position, TargetPosition, character.atkSpeed*Time.deltaTime);
+        Transform.position = Vector3.MoveTowards(Transform.position, TargetPosition, parent.atkSpeed*Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if(other.CompareTag("Character"))
+        if (other == parent_collider) return;
+        if(other.CompareTag("Character") )
         {
+            Character enemy = Cache.EnemyList(other);
             Destroy(other.gameObject);
-            Destroy(Transform.gameObject);
+            parent.m_Enemies.Remove(enemy);
+            DestroyWeapon();
         }
     }
 
-   
+    public void DestroyWeapon()
+    {
+        Destroy(Transform.gameObject);
+    }
 
 }

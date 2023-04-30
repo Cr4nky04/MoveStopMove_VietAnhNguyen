@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
 
-public class IdleState : BaseState
+public class IdleState : IState<Character>
 {
-    public override void EnterState(GameStateManager gameStateManager)
+    public void OnStart(Character bot)
     {
-
+        bot.GetComponent<NavMeshAgent>().isStopped=true;
+        bot.isMoving = false;
     }
 
-    public override void UpdateState(GameStateManager gameStateManager)
+    public void OnExecute(Character bot)
     {
-
+        bot.ChangeAnim("IsIdle");
+        ((Bot)bot).SeekRandomPoint();
+        if(bot.m_Enemies.Count > 0)
+        {
+            bot.currentState.ChangeState(new AttackState());
+        }
     }
 
-    public override void OnCollisonEnter(GameStateManager gameStateManager)
+    public void OnExit(Character bot)
     {
-
+        bot.GetComponent<NavMeshAgent>().isStopped = false;
+        bot.isMoving = true;
     }
 }

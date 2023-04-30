@@ -1,21 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class AttackState : BaseState
+public class AttackState : IState<Character>
 {
-    public override void EnterState(GameStateManager gameStateManager)
+    public float CountDownResetAttackTime = 3f;
+    public void OnStart(Character bot)
     {
+        bot.StartCoroutine(bot.Attack());
 
     }
 
-    public override void UpdateState(GameStateManager gameStateManager)
+    public void OnExecute(Character bot)
     {
+        
+        CountDownResetAttackTime -= Time.deltaTime;
+        if (CountDownResetAttackTime <= 0)
+        {
+            bot.isAttacking = false;
+            bot.currentState.ChangeState(new IdleState());
+        }
 
+        if (bot.CheckAnimationFinish())
+        {
+            bot.ChangeAnim("IsIdle");
+        }
     }
 
-    public override void OnCollisonEnter(GameStateManager gameStateManager)
+    public void OnExit(Character bot)
     {
-
+        bot.isAttacking = false;
     }
 }

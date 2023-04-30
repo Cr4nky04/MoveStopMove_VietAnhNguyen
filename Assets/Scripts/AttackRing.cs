@@ -21,5 +21,9 @@ public class AttackRing : MonoBehaviour
             Character enemy = Cache.EnemyList(other);
             character.m_Enemies.Remove(enemy);
         }
+        if(other.CompareTag("Weapon"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

@@ -11,11 +11,22 @@ public class Character : MonoBehaviour
     [SerializeField] protected Transform m_Transform;
     [SerializeField] protected Weapon weapon;
     [SerializeField] protected Character character;
+    [SerializeField] protected Animator anim;
 
-    public float atkSpeed; 
     private Vector3 direction;
+    private string currentAnim;
+
+    public float ResetAttackTime;
+    public GameStateManager<Character> currentState;
+    public Rigidbody character_rb;
+    public bool isAttacking = false;
+    public bool isMoving;
+    public float atkSpeed = 5f; 
     public Character Enemy;
     public List<Character> m_Enemies;
+    public string Name;
+
+    protected string currentAnimName = "";
     protected float score;
     public Transform Transform
     {
@@ -27,19 +38,66 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        currentState = new GameStateManager<Character>();
+        currentState.SetOwner(this);
+    }
+
+    virtual public void Start()
+    {
+
+    }
     virtual public void Update()
     {
         //Attack();
+
+        this.UpdateCharacterState();
+
+
     }
 
-    virtual public void Attack()
+    //virtual public void Attack()
+    //{
+
+
+
+
+    //}
+    virtual protected void UpdateCharacterState()
     {
-        if (m_Enemies == null) return;
+        currentState.UpdateState(this);
+    }
+
+    public void ChangeAnim(string animName)
+    {
+
+        if (currentAnim != animName)
+        {
+            Debug.Log(animName);
+            anim.ResetTrigger(currentAnim);
+            currentAnim = animName;
+            anim.SetTrigger(currentAnim);
+
+        }
+    }
+
+     public IEnumerator Attack()
+    {
+        Debug.Log("Attack");
         Enemy = m_Enemies[0];
         direction = Enemy.Transform.position - Transform.position;
         direction = direction.normalized;
-        Weapon attackingWeapon = Instantiate(weapon, Transform.position + 1.5f*direction, Quaternion.identity);
-        attackingWeapon.character = character;
+        Transform.LookAt(Enemy.Transform);
+        ChangeAnim("IsAttack");
+        Weapon attackingWeapon = Instantiate(weapon, Transform.position + 1.5f * direction, Quaternion.identity);
+        attackingWeapon.parent = character;
         attackingWeapon.TargetPosition = Enemy.Transform.position;
+        yield return Cache.GetWFS(3f);
+        isAttacking=false;
+    }
+    public bool CheckAnimationFinish()
+    {
+        return (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0));
     }
 }

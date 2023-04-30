@@ -2,26 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager<T> where T : Character
 {
-    BaseState currentState;
-    public IdleState IdleState = new IdleState();
-    public RunState RunState = new RunState();
-    public AttackState AttackState = new AttackState();
+    private IState<T> currentState;
+    private T typeClass;
 
-    private void Start()
+    public void ChangeState<TState>(TState state) where TState : IState<T>
     {
-        currentState = IdleState;
-        currentState.EnterState(this);
-    }
+        Debug.Log(currentState + " -> " + state);
+        if (currentState != null)
+        {
+            currentState.OnExit(typeClass);
+        }
 
-    private void Update()
-    {
-        currentState.UpdateState(this);
-    }
-    public void SwitchState(BaseState state)
-    {
         currentState = state;
-        state.EnterState(this);
+
+        if (currentState != null)
+        {
+            currentState.OnStart(typeClass);
+        }
+    }
+    public void UpdateState(T owner)
+    {
+        if (currentState != null)
+        {
+            currentState.OnExecute(owner);
+        }
+    }
+
+    public void SetOwner(T owner)
+    {
+        typeClass = owner;
     }
 }
