@@ -1,16 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class Weapon : MonoBehaviour
+public class Weapon : GameUnit
 {
     [SerializeField] protected Transform m_Transform;
-    [SerializeField] Player player;
 
     public Character parent;
     private Collider parent_collider;
-    private float timeExist = 4f;
     public Vector3 TargetPosition;
     public Transform Transform
     {
@@ -24,7 +23,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        parent_collider = parent.GetComponent<Collider>();  
+        
     }
 
     private void Update()
@@ -34,19 +33,26 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == parent_collider) return;
+        if(other == parent_collider) return;
         if(other.CompareTag("Character") )
         {
             Character enemy = Cache.EnemyList(other);
-            Destroy(other.gameObject);
-            parent.m_Enemies.Remove(enemy);
-            DestroyWeapon();
+            SimplePool.Despawn(this);
+            enemy.currentState.ChangeState(new BotDeathState());
         }
+
     }
 
-    public void DestroyWeapon()
+    public override void OnDespawn()
     {
-        Destroy(Transform.gameObject);
+        SimplePool.Despawn(this);
+        
+    }
+
+    public override void OnInit()
+    {
+        parent_collider = parent.GetComponent<Collider>();
+        //TargetPosition = Vector3.zero;
     }
 
 }

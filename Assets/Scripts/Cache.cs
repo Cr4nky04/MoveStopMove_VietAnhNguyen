@@ -40,4 +40,37 @@ public class Cache
 
         return m_EnemyList[key];
     }
+    //----------------------------------------------------------------------------------------------------
+
+    private static Dictionary<string, string> m_AnimName = new Dictionary<string, string>();
+    public static string AnimName(string anim)
+    {
+        if(!m_AnimName.ContainsKey(anim))
+        {
+            string name = anim;
+            m_AnimName.Add(anim, name);
+        }
+        return m_AnimName[anim];
+    }
+    private static Dictionary<Character, Character> m_CharacterList = new Dictionary<Character, Character>();
+    //----------------------------------------------------------------------------------------------------
+
+    public static Character CharacterList(Character key)
+    {
+        if (!m_CharacterList.ContainsKey(key))
+        {
+            
+
+            if (key != null)
+            {
+                m_CharacterList.Add(key, key);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        return m_CharacterList[key];
+    }
 }

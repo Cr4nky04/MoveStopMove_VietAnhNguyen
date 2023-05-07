@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering.VirtualTexturing;
 
-public class Character : MonoBehaviour
+public class Character : GameUnit
 {
     [SerializeField] public float atkRange=10f;
     [SerializeField] protected float sizeScale;
@@ -15,9 +17,10 @@ public class Character : MonoBehaviour
 
     private Vector3 direction;
     private string currentAnim;
+    private ObjectPooler objectPooler;
 
     public float ResetAttackTime;
-    public GameStateManager<Character> currentState;
+    public BotStateManager<Character> currentState;
     public Rigidbody character_rb;
     public bool isAttacking = false;
     public bool isMoving;
@@ -25,6 +28,7 @@ public class Character : MonoBehaviour
     public Character Enemy;
     public List<Character> m_Enemies;
     public string Name;
+    public UnityAction<Character> onDespawnCallback;
 
     protected string currentAnimName = "";
     protected float score;
@@ -40,13 +44,15 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        currentState = new GameStateManager<Character>();
+        currentState = new BotStateManager<Character>();
         currentState.SetOwner(this);
+        //Cache.CharacterList(character);
+        
     }
 
     virtual public void Start()
     {
-
+        objectPooler = ObjectPooler.Instance;
     }
     virtual public void Update()
     {
@@ -57,13 +63,7 @@ public class Character : MonoBehaviour
 
     }
 
-    //virtual public void Attack()
-    //{
 
-
-
-
-    //}
     virtual protected void UpdateCharacterState()
     {
         currentState.UpdateState(this);
@@ -82,22 +82,72 @@ public class Character : MonoBehaviour
         }
     }
 
-     public IEnumerator Attack()
+    public IEnumerator Attack()
     {
-        Debug.Log("Attack");
         Enemy = m_Enemies[0];
-        direction = Enemy.Transform.position - Transform.position;
-        direction = direction.normalized;
-        Transform.LookAt(Enemy.Transform);
-        ChangeAnim("IsAttack");
-        Weapon attackingWeapon = Instantiate(weapon, Transform.position + 1.5f * direction, Quaternion.identity);
-        attackingWeapon.parent = character;
+        
+
+        //direction = Enemy.Transform.position - Transform.position;
+        //direction = direction.normalized;
+
+        ChangeAnim(Cache.AnimName("IsAttack"));
+        yield return Cache.GetWFS(0.3f);
+
+        Weapon attackingWeapon = SimplePool.Spawn<Weapon>(PoolType.Brick, Transform.position, Quaternion.identity);
+
+        attackingWeapon.parent = this;
         attackingWeapon.TargetPosition = Enemy.Transform.position;
-        yield return Cache.GetWFS(3f);
+        attackingWeapon.OnInit();
+
+        yield return Cache.GetWFS(2f);
         isAttacking=false;
+        attackingWeapon.OnDespawn();
     }
     public bool CheckAnimationFinish()
     {
         return (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0));
+    }
+    public void OnRotate()
+    {
+
+    }
+    public override void OnDespawn()
+    {
+        SimplePool.Despawn(this);
+        onDespawnCallback?.Invoke(this);
+
+        /// Clear all function in callback
+        onDespawnCallback = null;
+    }
+
+    public override void OnInit()
+    {
+        
+    }
+    public void AddCharacter(Character character)
+    {
+        if (m_Enemies.Contains(character)) return;
+        m_Enemies.Add(character);
+
+        /// Add function to call back
+        character.onDespawnCallback += RemoveCharacter;
+    }
+    public void RemoveCharacter(Character character)
+    {
+        /// Debug.Log($"{gameObject.name} remove {character.gameObject.name}");
+        if (!m_Enemies.Contains(character)) return;
+        m_Enemies.Remove(character);
+
+        /// Remove callback after character despawn
+        onDespawnCallback -= character.RemoveCharacter;
+    }
+
+    public void Despawn()
+    {
+        gameObject.SetActive(false);
+        onDespawnCallback?.Invoke(this);
+
+        /// Clear all function in callback
+        onDespawnCallback = null;
     }
 }

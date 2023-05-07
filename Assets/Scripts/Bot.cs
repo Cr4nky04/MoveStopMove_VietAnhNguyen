@@ -15,8 +15,9 @@ public class Bot : Character
     public override void Start()
     {
         base.Start();
-        mapBound = floor.GetComponent<Renderer>().bounds;
-        currentState.ChangeState(new IdleState());  
+
+        currentState.ChangeState(new BotIdleState());
+
     }
 
     public override void Update()
@@ -40,14 +41,24 @@ public class Bot : Character
     public void MovingRandom()
     {
          bot.SetDestination(destinationPosition);
-        destination.transform.position = destinationPosition;
+        //destination.transform.position = destinationPosition;
     }
 
     public void SeekRandomPoint()
     {
         destinationPosition.x = Random.Range(mapBound.min.x, mapBound.max.x);
-        destinationPosition.y = mapBound.max.y;
+        destinationPosition.y = mapBound.max.y+1f;
         destinationPosition.z = Random.Range(mapBound.min.z, mapBound.max.z);
-        
+    }
+
+    public override void OnInit()
+    {
+        base.OnInit();
+        mapBound = floor.GetComponent<Renderer>().bounds;
+        Vector3 startPosition = new Vector3();
+        startPosition.x = Random.Range(mapBound.min.x, mapBound.max.x);
+        startPosition.y = Transform.position.y;
+        startPosition.z = Random.Range(mapBound.min.z, mapBound.max.z);
+        Transform.position = startPosition;
     }
 }

@@ -10,7 +10,7 @@ public class AttackRing : MonoBehaviour
         if (other.CompareTag("Character"))
         {
             Character enemy = Cache.EnemyList(other);
-            character.m_Enemies.Add(enemy);
+            character.AddCharacter(enemy);
         }
     }
 
@@ -21,9 +21,11 @@ public class AttackRing : MonoBehaviour
             Character enemy = Cache.EnemyList(other);
             character.m_Enemies.Remove(enemy);
         }
-        if(other.CompareTag("Weapon"))
+        if(other.CompareTag("Weapon") && other.GetComponent<Weapon>().parent == character)
         {
-            Destroy(other.gameObject);
+
+            other.GetComponent<Weapon>().OnDespawn();
         }
     }
+    
 }
