@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class BotIdleState : BotIState<Character>
+public class BotIdleState : IState<Character>
 {
     public void OnStart(Character bot)
     {

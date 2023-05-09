@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BotRunState : BotIState<Character>
+public class BotRunState : IState<Character>
 {
     public void OnStart(Character bot)
     {

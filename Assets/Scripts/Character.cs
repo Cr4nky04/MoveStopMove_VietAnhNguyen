@@ -20,7 +20,7 @@ public class Character : GameUnit
     private ObjectPooler objectPooler;
 
     public float ResetAttackTime;
-    public BotStateManager<Character> currentState;
+    public StateMachine<Character> currentState;
     public Rigidbody character_rb;
     public bool isAttacking = false;
     public bool isMoving;
@@ -44,7 +44,7 @@ public class Character : GameUnit
 
     private void Awake()
     {
-        currentState = new BotStateManager<Character>();
+        currentState = new StateMachine<Character>();
         currentState.SetOwner(this);
         //Cache.CharacterList(character);
         

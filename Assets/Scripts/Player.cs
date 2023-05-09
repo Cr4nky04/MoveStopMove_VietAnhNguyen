@@ -6,11 +6,22 @@ using UnityEngine.UIElements;
 
 public class Player : Character
 {
-    [SerializeField] private FloatingJoystick floatingJoystick;
+    [SerializeField] public FloatingJoystick floatingJoystick;
+    [SerializeField] WeaponData weaponData;
 
 
-    private Vector3 targetPosition;
-    private Vector3 lookDirection;
+    public Vector3 targetPosition;
+    public Vector3 lookDirection;
+
+    public override void Start()
+    {
+        base.Start();
+
+        currentState.ChangeState(new PlayerIdleState());
+
+        weaponData.GetData(1);
+
+    }
     override public void Update()
     {
         base.Update();
@@ -35,7 +46,7 @@ public class Player : Character
         //if(isMoving)
         //    ChangeAnim("IsRun");
     }
-    private void Moving()
+    public void Moving()
     {
         //if(floatingJoystick.Horizontal <0.1f && floatingJoystick.Vertical < 0.1f)
         //{
@@ -44,17 +55,17 @@ public class Player : Character
         //}
 
         lookDirection = new Vector3(floatingJoystick.Horizontal, 0f, floatingJoystick.Vertical);
-        if (Vector3.Distance(lookDirection, Vector3.zero) < 0.1f && !isAttacking)
-        {
-            isMoving = false;
-            ChangeAnim(Cache.AnimName("IsIdle"));
-            if ( m_Enemies.Count > 0)
-            {
-                Debug.Log(2);
-                isAttacking = true;
-                StartCoroutine(Attack());
-            }
-        }
+        //if (Vector3.Distance(lookDirection, Vector3.zero) < 0.1f && !isAttacking)
+        //{
+        //    isMoving = false;
+        //    ChangeAnim(Cache.AnimName("IsIdle"));
+        //    if ( m_Enemies.Count > 0)
+        //    {
+        //        Debug.Log(2);
+        //        isAttacking = true;
+        //        StartCoroutine(Attack());
+        //    }
+        //}
 
 
         if (Vector3.Distance(lookDirection, Vector3.zero) > 0.1f)
