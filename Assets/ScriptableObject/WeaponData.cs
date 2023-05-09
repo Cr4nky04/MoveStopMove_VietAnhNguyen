@@ -20,12 +20,10 @@ public class WeaponData : ScriptableObject
     [SerializeField] List<WeaponDataList> list;
 
 
-    public WeaponDataList GetData(int weaponIndex)
+    public WeaponDataList GetData(WeaponList weapon)
     {
-        return list[weaponIndex];
+        return list[(int)weapon];
     }
-
-
 }
 [Serializable]
 public class WeaponDataList
@@ -33,23 +31,20 @@ public class WeaponDataList
     public GameObject Prefab;
     public string WeaponName;
     public float ATKRange;
-    public float Damge;
 }
 
 public enum WeaponList
 {
     hammer = 0,
-    lollipop = 1,
-    knife = 2,
-    candycane = 3,
-    boomerang = 4,
-    smirlypop = 5,
-    axe = 6,
-    icecreamcone = 7,
-    battleaxe = 8,
-    z = 9,
-    arrow = 10, 
-    uzi = 11
+    candycane = 1,
+    boomerang = 2,
+    smirlypop = 3,
+    axe = 4,
+    icecreamcone = 5,
+    battleaxe = 6,
+    z = 7,
+    arrow = 8, 
+    uzi = 9
 }
 
 //[Serializable]

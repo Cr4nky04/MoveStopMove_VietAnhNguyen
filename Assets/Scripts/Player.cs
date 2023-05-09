@@ -16,10 +16,8 @@ public class Player : Character
     public override void Start()
     {
         base.Start();
-
         currentState.ChangeState(new PlayerIdleState());
-
-        weaponData.GetData(1);
+        weaponData.GetData(WeaponList.hammer);
 
     }
     override public void Update()
