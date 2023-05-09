@@ -136,7 +136,7 @@ MonoBehaviour:
   poolType: 0
   atkRange: 10
   sizeScale: 0
-  moveSpeed: 0
+  moveSpeed: 3.5
   m_Transform: {fileID: 0}
   weapon: {fileID: -592912079925584126, guid: 24b83a9644e1d9349bc84d564b6ab033, type: 3}
   character: {fileID: 0}
@@ -166,7 +166,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

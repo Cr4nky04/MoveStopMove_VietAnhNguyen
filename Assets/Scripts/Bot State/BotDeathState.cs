@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotDeathState : BotIState<Character>
+public class BotDeathState : IState<Character>
 {
     public void OnStart(Character bot)
     {

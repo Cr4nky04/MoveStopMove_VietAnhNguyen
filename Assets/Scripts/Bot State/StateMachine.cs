@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStateManager<T> where T : Character
+public class StateMachine<T> where T : Character
 {
-    private PlayerIState<T> currentState;
+    private IState<T> currentState;
     private T typeClass;
 
-    public void ChangeState<TState>(TState state) where TState : PlayerIState<T>
+    public void ChangeState<TState>(TState state) where TState : IState<T>
     {
         Debug.Log(currentState + " -> " + state);
         if (currentState != null)

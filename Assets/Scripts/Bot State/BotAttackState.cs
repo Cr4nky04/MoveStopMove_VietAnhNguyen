@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BotAttackState : BotIState<Character>
+public class BotAttackState : IState<Character>
 {
     public float CountDownResetAttackTime = 2f;
     public void OnStart(Character bot)
