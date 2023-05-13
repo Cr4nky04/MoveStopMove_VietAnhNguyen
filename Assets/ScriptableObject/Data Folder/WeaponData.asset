@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbb519eb5daf1f448f1ac87e11df930, type: 3}
+  m_Name: WeaponData
+  m_EditorClassIdentifier: 
+  list:
+  - Prefab: {fileID: 100000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
+    WeaponName: Hammer
+    ATKRange: 10
+    Purchase: 0
+    Equip: 0
+    WeaponType: 2
+  - Prefab: {fileID: 100000, guid: 47c5647b1ac791e4f94e83afb9095d5b, type: 3}
+    WeaponName: Candy Cane
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 5
+  - Prefab: {fileID: 100000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
+    WeaponName: Boomerang
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 6
+  - Prefab: {fileID: 100000, guid: 37a28123e5e39f44fbff5daa106af161, type: 3}
+    WeaponName: Swirly Pop
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 7
+  - Prefab: {fileID: 100000, guid: 1c040a6e7d23e904b87e93fb9c66a037, type: 3}
+    WeaponName: Axe
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 4
+  - Prefab: {fileID: 100000, guid: f45aa9b66c9c81a4cac7e66fe618e58f, type: 3}
+    WeaponName: Ice-cream Cone
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 4
+  - Prefab: {fileID: 100000, guid: 6083ff9012eefa348b00b8c543f1a742, type: 3}
+    WeaponName: Battle Axe
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 8
+  - Prefab: {fileID: -927199367670048503, guid: f6ba6acc744d0ff46af0b4623f8862f4, type: 3}
+    WeaponName: Z
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 9
+  - Prefab: {fileID: -927199367670048503, guid: ceffb78c74021304889ac584f173d156, type: 3}
+    WeaponName: Arrow
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 3
+  - Prefab: {fileID: -927199367670048503, guid: 7bf2d0115aa96964bb72869fce1a4aee, type: 3}
+    WeaponName: Uzi
+    ATKRange: 5
+    Purchase: 0
+    Equip: 0
+    WeaponType: 11

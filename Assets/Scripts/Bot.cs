@@ -12,10 +12,15 @@ public class Bot : Character
 
     public Vector3 destinationPosition;
 
+    public override void Awake()
+    {
+        base.Awake();
+        
+
+    }
     public override void Start()
     {
         base.Start();
-
         currentState.ChangeState(new BotIdleState());
 
     }

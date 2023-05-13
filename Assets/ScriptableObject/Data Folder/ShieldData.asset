@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ffe9f465622a44fab2b461a640636a, type: 3}
+  m_Name: ShieldData
+  m_EditorClassIdentifier: 
+  list:
+  - Prefab: {fileID: 9127180175151146598, guid: a9cf976ac66249044a696f632b8a592e, type: 3}
+    ShieldName: 
+    CoinIncrease: 0
+  - Prefab: {fileID: 3046258495363103855, guid: 51930e9b7bc90e245868fdc12b91f85c, type: 3}
+    ShieldName: 
+    CoinIncrease: 0

@@ -7,9 +7,9 @@ using static UnityEngine.GraphicsBuffer;
 public class Weapon : GameUnit
 {
     [SerializeField] protected Transform m_Transform;
-
-    public Character parent;
+    private WeaponDataList m_DataList;
     private Collider parent_collider;
+    public Character parent;
     public Vector3 TargetPosition;
     public Transform Transform
     {
@@ -29,6 +29,7 @@ public class Weapon : GameUnit
     private void Update()
     {
         Transform.position = Vector3.MoveTowards(Transform.position, TargetPosition, parent.atkSpeed*Time.deltaTime);
+        OnRotate();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +50,10 @@ public class Weapon : GameUnit
         
     }
 
+    public void OnRotate()
+    {
+        Transform.Rotate( new Vector3(3f,0f,0f));
+    }
     public override void OnInit()
     {
         parent_collider = parent.GetComponent<Collider>();

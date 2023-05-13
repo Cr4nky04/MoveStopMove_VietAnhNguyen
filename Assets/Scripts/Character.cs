@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.VirtualTexturing;
@@ -14,10 +15,15 @@ public class Character : GameUnit
     [SerializeField] protected Weapon weapon;
     [SerializeField] protected Character character;
     [SerializeField] protected Animator anim;
+    [SerializeField] protected GameObject pant;
+    [SerializeField] protected Transform holdWeapon;
+    [SerializeField] protected Transform head;
+    [SerializeField] protected Transform holdShield;
 
     private Vector3 direction;
     private string currentAnim;
     private ObjectPooler objectPooler;
+    private GameObject currentWeapon;
 
     public float ResetAttackTime;
     public StateMachine<Character> currentState;
@@ -29,6 +35,20 @@ public class Character : GameUnit
     public List<Character> m_Enemies;
     public string Name;
     public UnityAction<Character> onDespawnCallback;
+    public WeaponDataList WeaponStats;
+    public WeaponData weaponData;
+    public WeaponList WeaponList;
+    public PantDataList PantStats;
+    public PantData PantData;
+    public PantList PantList;
+    public Material PantMaterial;
+    public HairData HairData;
+    public HairDataList HairDataList;
+    public HairList HairList;
+    public ShieldData ShieldData;
+    public ShieldDataList ShieldDataList;
+    public ShieldList ShieldList;
+ 
 
     protected string currentAnimName = "";
     protected float score;
@@ -42,17 +62,22 @@ public class Character : GameUnit
         }
     }
 
-    private void Awake()
+    virtual public void Awake()
     {
+        PantMaterial = pant.GetComponent<Renderer>().sharedMaterial;
         currentState = new StateMachine<Character>();
         currentState.SetOwner(this);
         //Cache.CharacterList(character);
-        
     }
 
     virtual public void Start()
     {
         objectPooler = ObjectPooler.Instance;
+        ChangeWeapon(WeaponList);
+        ChangePant(PantList);
+        ChangeHair(HairList);
+        ChangeShield(ShieldList);
+        
     }
     virtual public void Update()
     {
@@ -93,10 +118,10 @@ public class Character : GameUnit
         ChangeAnim(Cache.AnimName("IsAttack"));
         yield return Cache.GetWFS(0.3f);
 
-        Weapon attackingWeapon = SimplePool.Spawn<Weapon>(PoolType.Brick, Transform.position, Quaternion.identity);
+        Weapon attackingWeapon = SimplePool.Spawn<Weapon>(WeaponStats.WeaponType, Transform.position+ Vector3.up, Quaternion.Euler(new Vector3(0f,0f,90f)));
 
         attackingWeapon.parent = this;
-        attackingWeapon.TargetPosition = Enemy.Transform.position;
+        attackingWeapon.TargetPosition = Enemy.Transform.position + Vector3.up;
         attackingWeapon.OnInit();
 
         yield return Cache.GetWFS(2f);
@@ -149,5 +174,27 @@ public class Character : GameUnit
 
         /// Clear all function in callback
         onDespawnCallback = null;
+    }
+    public void ChangeWeapon(WeaponList weapon)
+    {
+        Destroy(currentWeapon);
+        WeaponStats = weaponData.GetData(weapon);
+        currentWeapon = Instantiate(WeaponStats.Prefab,holdWeapon.position,Quaternion.Euler(new Vector3(0f,90f,180f)), holdWeapon);
+         
+    }
+    public void ChangePant(PantList pant)
+    {
+        this.pant.GetComponent<Renderer>().sharedMaterial = PantData.GetData(pant).Skin;
+    }
+
+    public void ChangeHair(HairList hair)
+    {
+        HairDataList = HairData.GetData(hair);
+        Instantiate(HairDataList.Prefab, head.position, Quaternion.identity, head);
+    }
+    public void ChangeShield(ShieldList shield)
+    {
+        ShieldDataList = ShieldData.GetData(shield);
+        Instantiate(ShieldDataList.Prefab, holdShield.position, Quaternion.identity, holdShield);
     }
 }

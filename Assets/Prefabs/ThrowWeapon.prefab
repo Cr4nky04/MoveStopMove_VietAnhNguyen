@@ -112,6 +112,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 1
   m_Transform: {fileID: 9149603565332638134}
-  player: {fileID: 0}
   parent: {fileID: 0}
   TargetPosition: {x: 0, y: 0, z: 0}

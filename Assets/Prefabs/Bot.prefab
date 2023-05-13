@@ -141,6 +141,10 @@ MonoBehaviour:
   weapon: {fileID: -592912079925584126, guid: 24b83a9644e1d9349bc84d564b6ab033, type: 3}
   character: {fileID: 0}
   anim: {fileID: 8901944700810790109}
+  pant: {fileID: 841718123203698899}
+  holdWeapon: {fileID: 231259166662323908}
+  head: {fileID: 1961528275359482325}
+  holdShield: {fileID: 7256138819511467295}
   ResetAttackTime: 0
   character_rb: {fileID: 0}
   isAttacking: 0
@@ -149,6 +153,34 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   m_Enemies: []
   Name: 
+  WeaponStats:
+    Prefab: {fileID: 0}
+    WeaponName: 
+    ATKRange: 0
+    Purchase: 0
+    Equip: 0
+    WeaponType: 0
+  weaponData: {fileID: 11400000, guid: d54d5129b53748a44a28c6719a9c04ae, type: 2}
+  WeaponList: 0
+  PantStats:
+    Skin: {fileID: 0}
+    SkinWeaponName: 
+    MoveSpeed: 0
+  PantData: {fileID: 11400000, guid: beacdcc414954954797c54d60f1df590, type: 2}
+  PantList: 6
+  PantMaterial: {fileID: 0}
+  HairData: {fileID: 11400000, guid: a9394f7471bd2cb47952a9929be1b572, type: 2}
+  HairDataList:
+    Prefab: {fileID: 0}
+    HatName: 
+    CoinIncrease: 0
+  HairList: 4
+  ShieldData: {fileID: 11400000, guid: 4ddd3f6499de7e84fac0ac47ec171313, type: 2}
+  ShieldDataList:
+    Prefab: {fileID: 0}
+    ShieldName: 
+    CoinIncrease: 0
+  ShieldList: 0
   mapBound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
@@ -521,9 +553,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+--- !u!4 &231259166662323908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3220319501169496967, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5799150353080550077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &841718123203698899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2606217863934893458, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5799150353080550077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1513222994748189095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5799150353080550077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1961528275359482325 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3800467336962686104, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 5799150353080550077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7256138819511467295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5420008163957686366, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 5799150353080550077}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &8901944700810790109 stripped

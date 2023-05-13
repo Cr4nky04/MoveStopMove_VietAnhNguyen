@@ -329,4 +329,17 @@ public enum PoolType
 {
     Bot,
     Brick,
+    Hammer,
+    Arrow,
+    Axe,
+    Knife,
+    CandayCane,
+    Boomerang,
+    SwirlyPop,
+    BattleAxe,
+    Z,
+    IcecreamCone,
+    Uzi,
+    None,
+
 }

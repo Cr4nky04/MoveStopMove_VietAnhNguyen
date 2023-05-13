@@ -7,17 +7,20 @@ using UnityEngine.UIElements;
 public class Player : Character
 {
     [SerializeField] public FloatingJoystick floatingJoystick;
-    [SerializeField] WeaponData weaponData;
-
 
     public Vector3 targetPosition;
     public Vector3 lookDirection;
 
+    public override void Awake()
+    {
+        base.Awake();
+        
+
+    }
     public override void Start()
     {
         base.Start();
         currentState.ChangeState(new PlayerIdleState());
-        weaponData.GetData(WeaponList.hammer);
 
     }
     override public void Update()
