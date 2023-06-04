@@ -1,14 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class StateMachine<T> where T : Character
 {
-    private IState<T> currentState;
+    public IState<T> currentState;
     private T typeClass;
 
     public void ChangeState<TState>(TState state) where TState : IState<T>
     {
+        //if (GameManager.IsState(GameState.MainMenu))
+        //{
+        //    if (currentState == null)
+        //    {
+        //        currentState = state;
+        //        if (currentState != null)
+        //        {
+        //            currentState.OnStart(typeClass);
+        //        }
+        //    }
+        //    return;
+        //}
         Debug.Log(currentState + " -> " + state);
         if (currentState != null)
         {
@@ -34,4 +47,5 @@ public class StateMachine<T> where T : Character
     {
         typeClass = owner;
     }
+
 }

@@ -9,8 +9,12 @@ public class Weapon : GameUnit
     [SerializeField] protected Transform m_Transform;
     private WeaponDataList m_DataList;
     private Collider parent_collider;
+    private Vector3 defaultScale;
+
     public Character parent;
+    public float WeaponSpeed;
     public Vector3 TargetPosition;
+    public float WeaponScale;
     public Transform Transform
     {
         get
@@ -21,6 +25,10 @@ public class Weapon : GameUnit
         }
     }
 
+    private void Awake()
+    {
+        defaultScale = transform.localScale;
+    }
     private void Start()
     {
         
@@ -28,20 +36,29 @@ public class Weapon : GameUnit
 
     private void Update()
     {
-        Transform.position = Vector3.MoveTowards(Transform.position, TargetPosition, parent.atkSpeed*Time.deltaTime);
+        if(Transform==null)
+            return;
+        if (TargetPosition == null)
+            return;
+        
+        Transform.position = Vector3.MoveTowards(Transform.position, TargetPosition, WeaponSpeed * Time.deltaTime);
+        if(Vector3.Distance(Transform.position, TargetPosition)<0.1f)
+        {
+            OnDespawn();
+        }
         OnRotate();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other == parent_collider) return;
-        if(other.CompareTag("Character") )
+        if(other.CompareTag(Cache.TAG_CHARACTER) )
         {
-            Character enemy = Cache.EnemyList(other);
+            //TODO:
             SimplePool.Despawn(this);
-            enemy.currentState.ChangeState(new BotDeathState());
+            parent.KillUp();
+            Cache.EnemyList(other).OnHit();
         }
-
     }
 
     public override void OnDespawn()
@@ -57,6 +74,9 @@ public class Weapon : GameUnit
     public override void OnInit()
     {
         parent_collider = parent.GetComponent<Collider>();
+        WeaponSpeed = parent.WeaponSpeed;
+        WeaponScale = parent.WeaponScale;
+        transform.localScale = defaultScale * WeaponScale;
         //TargetPosition = Vector3.zero;
     }
 

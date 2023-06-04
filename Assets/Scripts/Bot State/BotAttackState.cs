@@ -9,6 +9,7 @@ public class BotAttackState : IState<Character>
     public float CountDownResetAttackTime = 2f;
     public void OnStart(Character bot)
     {
+        //TODO: khong dung getcomponent
         bot.GetComponent<NavMeshAgent>().isStopped = true;
         bot.isMoving = false;
         bot.StartCoroutine(bot.Attack());
@@ -25,7 +26,7 @@ public class BotAttackState : IState<Character>
 
         if (bot.CheckAnimationFinish())
         {
-            bot.ChangeAnim("IsIdle");
+            bot.ChangeAnim(Cache.ANIM_IDLE);
         }
     }
 

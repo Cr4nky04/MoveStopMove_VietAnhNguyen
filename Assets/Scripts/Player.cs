@@ -7,45 +7,41 @@ using UnityEngine.UIElements;
 public class Player : Character
 {
     [SerializeField] public FloatingJoystick floatingJoystick;
+    [SerializeField] private SkinShop skinShop; 
 
     public Vector3 targetPosition;
     public Vector3 lookDirection;
+    
 
     public override void Awake()
     {
         base.Awake();
-        
-
     }
     public override void Start()
     {
         base.Start();
-        currentState.ChangeState(new PlayerIdleState());
+        skinShop.Player = this;
+        OnInit();
 
+    }
+    public string cs;
+    
+    public override void OnInit()
+    {
+        base.OnInit();
+        currentState.ChangeState(new PlayerIdleState());
     }
     override public void Update()
     {
+        cs = currentState.currentState.ToString();
         base.Update();
         Moving();
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-        //    Attack();
-        //}
-        //if(player_rb.velocity.magnitude < 0.01f)
-        //{
-        //    isMoving = false;
-        //}
-        //if (!isMoving)
-        //{
+        Debug.Log("Player" + currentState);
+        if(isDeath)
+        {
 
-        //    if (isAttacking == false && m_Enemies.Count == 0)
-        //    {
-        //        ChangeAnim("IsIdle");
-        //    }
-
-        //}
-        //if(isMoving)
-        //    ChangeAnim("IsRun");
+        }
+        
     }
     public void Moving()
     {
@@ -54,8 +50,11 @@ public class Player : Character
         //    isMoving = false;
         //    return;
         //}
+        if(floatingJoystick!=null)
+        {
+            lookDirection = new Vector3(floatingJoystick.Horizontal, 0f, floatingJoystick.Vertical);
 
-        lookDirection = new Vector3(floatingJoystick.Horizontal, 0f, floatingJoystick.Vertical);
+        }
         //if (Vector3.Distance(lookDirection, Vector3.zero) < 0.1f && !isAttacking)
         //{
         //    isMoving = false;
@@ -81,10 +80,20 @@ public class Player : Character
         character_rb.position = Vector3.MoveTowards(character_rb.position, targetPosition, moveSpeed * Time.deltaTime);
 
     }
-    private void TargetRing()
-    {
 
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+    }
+    public override void KillUp()
+    {
+        base.KillUp();
+        LevelManager.Ins.SetGold(100);
     }
 
-
+    public override void OnPlayState()
+    {
+        base.OnPlayState();
+        currentState.ChangeState(new PlayerIdleState());
+    }
 }

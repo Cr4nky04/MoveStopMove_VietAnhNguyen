@@ -32,10 +32,11 @@ public class WeaponData : ScriptableObject
 public class WeaponDataList
 {
     public GameObject Prefab;
+    public GameObject HandWeapon;
     public string WeaponName;
-    public float ATKRange;
-    public bool Purchase;
-    public bool Equip;
+    public float ATKRangeScalar;
+    public float AttackSpeed;
+    public string Description;
     public PoolType WeaponType;
 }
 

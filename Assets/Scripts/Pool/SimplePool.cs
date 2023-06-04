@@ -340,6 +340,7 @@ public enum PoolType
     Z,
     IcecreamCone,
     Uzi,
+    Waypoint,
     None,
-
+    HitFx,
 }

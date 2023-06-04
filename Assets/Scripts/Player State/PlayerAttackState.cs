@@ -9,7 +9,12 @@ public class PlayerAttackState : IState<Character>
     public void OnStart(Character player)
     {
         player.isMoving = false;
+        player.m_Enemies[0].TargetRing.ActiveTargetRing();
         player.StartCoroutine(player.Attack());
+
+        Player clonePlayer = ((Player)player);
+
+        CountDownResetAttackTime = clonePlayer.AttackSpeed;
     }
 
     public void OnExecute(Character player)
@@ -23,7 +28,7 @@ public class PlayerAttackState : IState<Character>
 
         if (player.CheckAnimationFinish())
         {
-            player.ChangeAnim("IsIdle");
+            player.ChangeAnim(Cache.ANIM_IDLE);
         }
         if (Vector3.Distance(clonePlayer.lookDirection, Vector3.zero) > 0.1f)
         {

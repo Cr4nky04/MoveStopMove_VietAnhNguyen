@@ -35,6 +35,7 @@ public class IconDataList
     public string IconName;
     public WeaponList WeaponList;
     public string BuffDescription;
+    public int Price;
 }
 
 public enum IconList

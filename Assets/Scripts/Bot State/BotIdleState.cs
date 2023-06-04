@@ -9,9 +9,9 @@ public class BotIdleState : IState<Character>
 {
     public void OnStart(Character bot)
     {
-        bot.GetComponent<NavMeshAgent>().isStopped=true;
+        bot.Stop();
         bot.isMoving = false;
-        bot.ChangeAnim(Cache.AnimName("IsIdle"));
+        bot.ChangeAnim(Cache.ANIM_IDLE);
     }
 
     public void OnExecute(Character bot)

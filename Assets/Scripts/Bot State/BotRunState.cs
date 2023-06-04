@@ -10,7 +10,7 @@ public class BotRunState : IState<Character>
     {
         bot.GetComponent<NavMeshAgent>().isStopped = false;
         bot.isMoving = true;
-        bot.ChangeAnim(Cache.AnimName("IsRun"));
+        bot.ChangeAnim(Cache.ANIM_RUN);
     }
 
     public void OnExecute(Character bot)

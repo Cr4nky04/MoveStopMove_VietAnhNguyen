@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Character
   - Weapon
+  - Missile
+  - Obstacle
   layers:
   - Default
   - TransparentFX

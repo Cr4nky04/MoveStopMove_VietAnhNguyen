@@ -8,7 +8,7 @@ public class NoneState : IState<Character>
 {
     public void OnStart(Character character)
     {
-        
+        character.ChangeAnim(Cache.AnimName("IsIdle"));
     }
 
     public void OnExecute(Character character)

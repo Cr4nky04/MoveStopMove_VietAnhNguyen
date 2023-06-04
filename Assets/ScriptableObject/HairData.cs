@@ -17,7 +17,7 @@ public class HairData : ScriptableObject
     //}
     //[SerializeField]
     //public Weapon[] WeaponList;
-    [SerializeField] List<HairDataList> list;
+    public List<HairDataList> list;
 
 
 
@@ -32,6 +32,7 @@ public class HairData : ScriptableObject
 public class HairDataList
 {
     public GameObject Prefab;
+    public Sprite Sprite;
     public string HatName;
     public float CoinIncrease;
 }

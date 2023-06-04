@@ -20,9 +20,8 @@ public class CameraController : MonoBehaviour
 
     private void CameraFollow()
     {
-        Vector3 cameraPosition = target.transform.position + new Vector3(0f, 1f, -2f) * distanceBehindObject;
+        Vector3 cameraPosition = target.transform.position + new Vector3(0f, 3f, -3f) * distanceBehindObject;
         transform.position = cameraPosition;
-
         transform.LookAt(target.transform);
     }
 }

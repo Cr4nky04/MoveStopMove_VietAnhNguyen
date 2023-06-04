@@ -16,6 +16,8 @@ public class WeaponDisplay : MonoBehaviour
     public Player Player;
     public TMP_Text WeaponName;
     public TMP_Text BuffDescription;
+    public TMP_Text Price;
+    public int WeaponPrice;
 
     private void OnEnable()
     {
@@ -38,7 +40,8 @@ public class WeaponDisplay : MonoBehaviour
         IconDataList = IconData.GetData(weaponIcon);
         WeaponImage.sprite = IconDataList.WeaponIcon;
         WeaponName.text = IconDataList.IconName;
-        BuffDescription.text = IconDataList.BuffDescription;   
+        BuffDescription.text = IconDataList.BuffDescription;
+        Price.text = IconDataList.Price.ToString();
     }
     public void NextWeaponIcon()
     {
@@ -56,5 +59,9 @@ public class WeaponDisplay : MonoBehaviour
     {
         IconDataList = IconData.GetData(weaponIcon);
         Player.ChangeWeapon(IconDataList.WeaponList);
+    }
+    public void BuyWeapon()
+    {
+        LevelManager.Ins.Buy(IconDataList.Price);
     }
 }

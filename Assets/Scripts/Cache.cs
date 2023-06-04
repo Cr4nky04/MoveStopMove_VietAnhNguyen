@@ -42,6 +42,14 @@ public class Cache
     }
     //----------------------------------------------------------------------------------------------------
 
+    public const string ANIM_RUN = "IsRun";
+    public const string ANIM_IDLE = "IsIdle";
+    public const string ANIM_DEAD = "IsDead";
+    public const string ANIM_ATTACK = "IsAttack";
+    public const string TAG_CHARACTER = "Character";
+    public const string TAG_WEAPON = "Weapon";
+    public const string TAG_OBSTACLE = "Obstacle";
+
     private static Dictionary<string, string> m_AnimName = new Dictionary<string, string>();
     public static string AnimName(string anim)
     {
@@ -72,5 +80,26 @@ public class Cache
         }
 
         return m_CharacterList[key];
+    }
+    //----------------------------------------------------------------------------------------------
+    private static Dictionary<Collider, ObjectTransparent> m_ObstacleList = new Dictionary<Collider, ObjectTransparent>();
+
+    public static ObjectTransparent ObstacleList(Collider key)
+    {
+        if (!m_ObstacleList.ContainsKey(key))
+        {
+            ObjectTransparent obstacle = key.GetComponent<ObjectTransparent>();
+
+            if (obstacle != null)
+            {
+                m_ObstacleList.Add(key, obstacle);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        return m_ObstacleList[key];
     }
 }

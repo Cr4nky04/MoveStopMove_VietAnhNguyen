@@ -8,7 +8,7 @@ public class PlayerIdleState : IState<Character>
     public void OnStart(Character player)
     {
         player.isMoving = false;
-        player.ChangeAnim(Cache.AnimName("IsIdle"));
+        player.ChangeAnim(Cache.ANIM_IDLE);
     }
 
     public void OnExecute(Character player)

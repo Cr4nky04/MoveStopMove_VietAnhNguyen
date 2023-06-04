@@ -14,32 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list:
   - Prefab: {fileID: 6126298898403729305, guid: 5e19b2ce96ae3584183475e317d4184b, type: 3}
+    Sprite: {fileID: 21300000, guid: 2f8937590677b044b8619858abca9ecf, type: 3}
     HatName: Arrow
     CoinIncrease: 10
   - Prefab: {fileID: 4514587062691379666, guid: a353e688372351f45826d2f4c0652dcf, type: 3}
+    Sprite: {fileID: 21300000, guid: 7ecc7cd28cb66fb41ac2e56ca5e22d5c, type: 3}
     HatName: Cowboy
     CoinIncrease: 10
   - Prefab: {fileID: 8144336739514995931, guid: 87e1299fe411fc04b8b4ec0f6d06b88c, type: 3}
+    Sprite: {fileID: 21300000, guid: a50fa6b5fea3d264cbec440c2da1dbf8, type: 3}
     HatName: Crown
     CoinIncrease: 10
   - Prefab: {fileID: 4938546607578796222, guid: 31d31f13c74b21743a8e2173f17caf21, type: 3}
+    Sprite: {fileID: 21300000, guid: 5dd6afb8b1bc7b947853e77fc8811be4, type: 3}
     HatName: Ear
     CoinIncrease: 10
   - Prefab: {fileID: 7763420717238950848, guid: 6a3497577d6f0e54893a0b2a247715af, type: 3}
+    Sprite: {fileID: 21300000, guid: 16a71104cd40fbd408c2919484df4cd7, type: 3}
     HatName: Hat
     CoinIncrease: 10
   - Prefab: {fileID: 7539941713197606463, guid: b6d9da3b1718b354fa79af9a9a5bc375, type: 3}
+    Sprite: {fileID: 21300000, guid: 76e934370403f35428e37cc379bed4c7, type: 3}
     HatName: Hat Cap
     CoinIncrease: 10
   - Prefab: {fileID: 2661668088701965291, guid: 4ec714d51c4e0e84999ccbb4cb421148, type: 3}
+    Sprite: {fileID: 21300000, guid: 69fc10e773b5a814198a5883e168c2b7, type: 3}
     HatName: Hat_Yellow
     CoinIncrease: 10
   - Prefab: {fileID: 4388613658042262488, guid: 3ecc3ac388faf87408f6cd961c24cd16, type: 3}
+    Sprite: {fileID: 21300000, guid: 694f596b7929bdb409ba3630631783d9, type: 3}
     HatName: Headphone
     CoinIncrease: 10
   - Prefab: {fileID: 1697123610253608152, guid: ca1b2a18d449ad34a95325c7314358b9, type: 3}
+    Sprite: {fileID: 21300000, guid: c72f60a9ff619e54ea03f81d8477c714, type: 3}
     HatName: Horn
     CoinIncrease: 10
   - Prefab: {fileID: 1426397955060529068, guid: b6ddf4c39665f824d8273c290dd4473c, type: 3}
+    Sprite: {fileID: 21300000, guid: 0721f07e295ea594ba265006fe888315, type: 3}
     HatName: Rau
     CoinIncrease: 10

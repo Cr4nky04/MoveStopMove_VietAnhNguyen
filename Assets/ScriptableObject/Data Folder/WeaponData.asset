@@ -13,63 +13,73 @@ MonoBehaviour:
   m_Name: WeaponData
   m_EditorClassIdentifier: 
   list:
-  - Prefab: {fileID: 100000, guid: 90389cac50942cb4ca38583e6531094a, type: 3}
+  - Prefab: {fileID: 3042520887225003401, guid: 71dc3c3fa1ce7c04aa831094addd5ab3, type: 3}
+    HandWeapon: {fileID: 3042520887225003401, guid: 030887641c6c1ff46b947e5df60e18e4, type: 3}
     WeaponName: Hammer
-    ATKRange: 10
-    Purchase: 0
-    Equip: 0
+    ATKRangeScalar: 10
+    AttackSpeed: 0
+    Description: 
     WeaponType: 2
-  - Prefab: {fileID: 100000, guid: 47c5647b1ac791e4f94e83afb9095d5b, type: 3}
+  - Prefab: {fileID: 6119772872489715701, guid: 4d08644bc7f836e43a987047a7764a94, type: 3}
+    HandWeapon: {fileID: 6119772872489715701, guid: 8faa77b01f9e11c4da212a0f9a3e63d0, type: 3}
     WeaponName: Candy Cane
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
-    WeaponType: 5
-  - Prefab: {fileID: 100000, guid: cb6e597070ed41f4eb5cb9583c725959, type: 3}
-    WeaponName: Boomerang
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
+    ATKRangeScalar: 0
+    AttackSpeed: 10
+    Description: 
     WeaponType: 6
-  - Prefab: {fileID: 100000, guid: 37a28123e5e39f44fbff5daa106af161, type: 3}
-    WeaponName: Swirly Pop
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
+  - Prefab: {fileID: 6743657843672156062, guid: e7bf4ea049de70d4a93b6371076d1671, type: 3}
+    HandWeapon: {fileID: 6743657843672156062, guid: c6aeadc90c153804485a689e03d23d6e, type: 3}
+    WeaponName: Boomerang
+    ATKRangeScalar: 15
+    AttackSpeed: 0
+    Description: 
     WeaponType: 7
-  - Prefab: {fileID: 100000, guid: 1c040a6e7d23e904b87e93fb9c66a037, type: 3}
-    WeaponName: Axe
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
-    WeaponType: 4
-  - Prefab: {fileID: 100000, guid: f45aa9b66c9c81a4cac7e66fe618e58f, type: 3}
-    WeaponName: Ice-cream Cone
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
-    WeaponType: 4
-  - Prefab: {fileID: 100000, guid: 6083ff9012eefa348b00b8c543f1a742, type: 3}
-    WeaponName: Battle Axe
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
+  - Prefab: {fileID: 4903756645938743402, guid: 00848dbe3d92bba499629986096c8b70, type: 3}
+    HandWeapon: {fileID: 4903756645938743402, guid: e4069ddd5e0abc5449ac8a20da65e427, type: 3}
+    WeaponName: Swirly Pop
+    ATKRangeScalar: 0
+    AttackSpeed: 15
+    Description: 
     WeaponType: 8
-  - Prefab: {fileID: -927199367670048503, guid: f6ba6acc744d0ff46af0b4623f8862f4, type: 3}
-    WeaponName: Z
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
-    WeaponType: 9
-  - Prefab: {fileID: -927199367670048503, guid: ceffb78c74021304889ac584f173d156, type: 3}
-    WeaponName: Arrow
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
-    WeaponType: 3
-  - Prefab: {fileID: -927199367670048503, guid: 7bf2d0115aa96964bb72869fce1a4aee, type: 3}
-    WeaponName: Uzi
-    ATKRange: 5
-    Purchase: 0
-    Equip: 0
+  - Prefab: {fileID: 1985480174753380565, guid: c2c241a23a583b845931521a5487faf5, type: 3}
+    HandWeapon: {fileID: 1985480174753380565, guid: 1f05d67e8a9fa7d4b857fcf07050dbe2, type: 3}
+    WeaponName: Axe
+    ATKRangeScalar: 20
+    AttackSpeed: 0
+    Description: 
+    WeaponType: 4
+  - Prefab: {fileID: 7690405402068389564, guid: 81daa57f83f99b645abaf0ae781f7417, type: 3}
+    HandWeapon: {fileID: 7690405402068389564, guid: b9fbfd48dad57fb4ba992a0208085a55, type: 3}
+    WeaponName: Ice-cream Cone
+    ATKRangeScalar: 0
+    AttackSpeed: 20
+    Description: 
     WeaponType: 11
+  - Prefab: {fileID: 7336939792562158442, guid: edf52b61794cae043b01b1d4a0f39db2, type: 3}
+    HandWeapon: {fileID: 7336939792562158442, guid: 001321ccfb1e33b428ce7715a1f473b1, type: 3}
+    WeaponName: Battle Axe
+    ATKRangeScalar: 25
+    AttackSpeed: 0
+    Description: 
+    WeaponType: 9
+  - Prefab: {fileID: 2036785460752516705, guid: e5176c3bc31c4714a9ec97b43f227370, type: 3}
+    HandWeapon: {fileID: 2036785460752516705, guid: 01078179dee040d40a4cdb03ec145edd, type: 3}
+    WeaponName: Z
+    ATKRangeScalar: 0
+    AttackSpeed: 25
+    Description: 
+    WeaponType: 10
+  - Prefab: {fileID: 8105667930158364341, guid: a5e8ee15fd5568e449495669b0b1c8e6, type: 3}
+    HandWeapon: {fileID: 8105667930158364341, guid: 6f42a4007725c9043930799155541900, type: 3}
+    WeaponName: Arrow
+    ATKRangeScalar: 30
+    AttackSpeed: 0
+    Description: 
+    WeaponType: 3
+  - Prefab: {fileID: 9160710140749857914, guid: 1587ec8cb6f9c5041a69018c5af0f18a, type: 3}
+    HandWeapon: {fileID: 9160710140749857914, guid: 7119919226faa404ebad74be3dfbfd4a, type: 3}
+    WeaponName: Uzi
+    ATKRangeScalar: 0
+    AttackSpeed: 50
+    Description: 
+    WeaponType: 12

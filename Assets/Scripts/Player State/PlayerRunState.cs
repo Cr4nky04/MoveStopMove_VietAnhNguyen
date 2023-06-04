@@ -8,7 +8,7 @@ public class PlayerRunState : IState<Character>
     public void OnStart(Character player)
     {
         player.isMoving = true;
-        player.ChangeAnim(Cache.AnimName("IsRun"));
+        player.ChangeAnim(Cache.ANIM_RUN);
     }
 
     public void OnExecute(Character player)

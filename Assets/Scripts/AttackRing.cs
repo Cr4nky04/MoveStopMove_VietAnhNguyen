@@ -5,27 +5,29 @@ using UnityEngine;
 public class AttackRing : MonoBehaviour
 {
     [SerializeField] Character character;
-    private void OnTriggerEnter(Collider other)
+
+    public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag(Cache.TAG_CHARACTER))
         {
             Character enemy = Cache.EnemyList(other);
             character.AddCharacter(enemy);
         }
+        
     }
 
-    private void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Character"))
+        if(other.CompareTag(Cache.TAG_CHARACTER))
         {
             Character enemy = Cache.EnemyList(other);
             character.m_Enemies.Remove(enemy);
         }
-        if(other.CompareTag("Weapon") && other.GetComponent<Weapon>().parent == character)
+        if(other.CompareTag(Cache.TAG_WEAPON) && other.GetComponent<Weapon>().parent == character)
         {
-
             other.GetComponent<Weapon>().OnDespawn();
         }
+        
     }
     
 }
